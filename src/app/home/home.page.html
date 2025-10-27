@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Desafio Clima
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-item>
+    <ion-input
+      label="CEP ou Cidade"
+      labelPlacement="floating"
+      placeholder="Ex: 74000000 ou Goiânia"
+      [(ngModel)]="termoBusca"
+      (keyup.enter)="buscarClima()"
+      [disabled]="carregando"
+    ></ion-input>
+  </ion-item>
+
+  <ion-button
+    expand="block"
+    class="ion-margin-top"
+    (click)="buscarClima()"
+    [disabled]="carregando"
+  >
+    <ion-spinner *ngIf="carregando; else iconeBusca" name="crescent"></ion-spinner>
+    <ng-template #iconeBusca>
+      <ion-icon name="search" slot="start"></ion-icon>
+      Buscar
+    </ng-template>
+  </ion-button>
+
+  <ion-card *ngIf="mensagemErro" color="danger" class="ion-margin-top">
+    <ion-card-content class="ion-text-center">
+      <ion-icon name="warning-outline" size="large"></ion-icon>
+      <p>{{ mensagemErro }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="resultadoClima && !carregando" class="ion-margin-top">
+    <ion-card-header>
+      <ion-card-title>{{ resultadoClima.cidade }}, {{ resultadoClima.estado }}</ion-card-title>
+      <ion-card-subtitle>
+        Atualizado em: {{ resultadoClima.atualizacao | date:'dd/MM/yyyy HH:mm' }}
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="temperatura-principal">
+        <ion-icon name="thermometer-outline"></ion-icon>
+        {{ resultadoClima.temperatura | number:'1.0-0' }}{{ resultadoClima.unidades.temperatura }}
+      </div>
+      <div class="condicao-principal">{{ resultadoClima.condicao }}</div>
+
+      <ion-grid class="ion-margin-top">
+        <ion-row>
+          <ion-col size="6">
+            <ion-item lines="none">
+              <ion-icon name="water-outline" slot="start" color="primary"></ion-icon>
+              <ion-label>
+                <h2>Umidade</h2>
+                <p>{{ resultadoClima.umidade }} %</p>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item lines="none">
+              <ion-icon name="flag-outline" slot="start" color="primary"></ion-icon>
+              <ion-label>
+                <h2>Vento</h2>
+                <p>{{ resultadoClima.vento | number:'1.0-1' }} {{ resultadoClima.unidades.vento }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,35 @@
+ion-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.temperatura-principal {
+  font-size: 4rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+
+  ion-icon {
+    font-size: 3.5rem;
+    margin-right: 1rem;
+  }
+}
+
+.condicao-principal {
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  color: var(--ion-color-medium-shade);
+}
+
+// Remove a borda padrão do ion-item dentro do grid
+ion-item.md, ion-item.ios {
+  --inner-border-width: 0;
+}
+
+// Garante que o spinner no botão fique centralizado
+ion-button ion-spinner {
+  margin: 0 auto;
+}

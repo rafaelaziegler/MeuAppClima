@@ -1,0 +1,7 @@
+{
+  "name": "MeuClimaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
