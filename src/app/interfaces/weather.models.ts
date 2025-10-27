@@ -1,4 +1,4 @@
-// 1. Resposta da API ViaCEP
+// API ViaCEP
 export interface CepData {
   cep: string;
   logradouro: string;
@@ -10,7 +10,7 @@ export interface CepData {
   erro?: boolean;
 }
 
-// 2. Resposta da API Open-Meteo Geocoding
+// API Open-Meteo Geocoding
 export interface GeocodingLocation {
   id: number;
   name: string;
@@ -23,7 +23,7 @@ export interface OpenMeteoGeocodingResponse {
   results?: GeocodingLocation[];
 }
 
-// 3. Resposta da API Open-Meteo Forecast
+// API Open-Meteo Forecast
 export interface CurrentWeather {
   time: string; // ISO 8601
   temperature_2m: number;
@@ -39,7 +39,6 @@ export interface OpenMeteoResponse {
   }
 }
 
-// --- Modelos Internos do App (UI) ---
 export interface GeocodingResult {
   latitude: number;
   longitude: number;

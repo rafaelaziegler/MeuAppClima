@@ -11,9 +11,6 @@ export class GeocodingService {
   private http = inject(HttpClient);
   private apiUrl = 'https://geocoding-api.open-meteo.com/v1/search';
 
-  /**
-   * Este é o método que estava faltando
-   */
   getCoordinates(locationName: string): Observable<GeocodingResult | null> {
     const params = {
       name: locationName,
